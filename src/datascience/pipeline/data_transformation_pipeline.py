@@ -5,7 +5,7 @@ from pathlib import Path
 
 STAGE_NAME="Data Validation Stage"
 
-class DataIngestionTransformationPipeline:
+class DataTransformationTrainingPipeline:
     def __init__(self):
         pass
     
@@ -26,7 +26,7 @@ class DataIngestionTransformationPipeline:
 if __name__ == "__main__":
     try:
         logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
-        obj = DataIngestionTransformationPipeline()
+        obj = DataTransformationTrainingPipeline()
         obj.initiate_data_transformation()
         logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\n==========x")
     except Exception as e:

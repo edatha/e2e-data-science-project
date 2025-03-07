@@ -4,7 +4,7 @@ from src.datascience import logger
 
 STAGE_NAME="Data Validation Stage"
 
-class DataIngestionValidationPipeline:
+class DataValidationTrainingPipeline:
     def __init__(self):
         pass
     
@@ -17,7 +17,7 @@ class DataIngestionValidationPipeline:
 if __name__ == "__main__":
     try:
         logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
-        obj = DataIngestionValidationPipeline()
+        obj = DataValidationTrainingPipeline()
         obj.initiate_data_validation()
         logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\n==========x")
     except Exception as e:
