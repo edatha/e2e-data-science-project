@@ -9,10 +9,17 @@ import joblib
 from pathlib import Path
 from src.datascience.entity.config_entity import ModelEvaluationConfig
 from src.datascience.utils.common import save_json
+from dotenv import load_dotenv
 
-# os.environ["MLFLOW_TRACKING_URI"]="https://dagshub.com/edatha/e2e-data-science-project.mlflow"
-# os.environ["MLFLOW_TRACKING_USERNAME"]="edatha"
-# os.environ["MLFLOW_TRACKING_PASSWORD"]="e84b4f536dbdb4f8b46a0fc25c0fcf86389f77ea"
+load_dotenv()
+mlflow_uri = os.getenv("MLFLOW_TRACKING_URI")
+mlflow_username = os.getenv("MLFLOW_TRACKING_USERNAME")
+mlflow_password = os.getenv("MLFLOW_TRACKING_PASSWORD")
+
+# Set the environment
+os.environ["MLFLOW_TRACKING_URI"] = mlflow_uri
+os.environ["MLFLOW_TRACKING_USERNAME"] = mlflow_username
+os.environ["MLFLOW_TRACKING_PASSWORD"] = mlflow_password
 
 class ModelEvaluation:
     def __init__(self, config:ModelEvaluationConfig):
@@ -32,7 +39,7 @@ class ModelEvaluation:
         test_x = test_data.drop([self.config.target_column], axis=1)
         test_y = test_data[[self.config.target_column]]
         
-        mlflow.set_registry_uri(self.config.mlflow_uri)
+        mlflow.set_registry_uri(mlflow_uri)
         tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
         
         with mlflow.start_run():

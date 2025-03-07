@@ -1,6 +1,9 @@
+import os
 from src.datascience.constants import *
 from src.datascience.utils.common import read_yaml, create_directories
 from src.datascience.entity.config_entity import (DataIngestionConfig, DataValidationConfig, DataTransformationConfig, ModelTrainerConfig, ModelEvaluationConfig)
+from dotenv import load_dotenv
+load_dotenv()
 
 class ConfigurationManager:
     def __init__(self,
@@ -68,6 +71,7 @@ class ConfigurationManager:
         )
         
         return model_trainer_config
+    
     def get_model_evaluation_config(self) -> ModelEvaluationConfig:
         config=self.config.model_evaluation
         params=self.params.ElasticNet
@@ -82,6 +86,6 @@ class ConfigurationManager:
             metric_file_name = config.metric_file_name,
             target_column=schema.name,
             all_params=params,
-            mlflow_uri="https://dagshub.com/edatha/e2e-data-science-project.mlflow"
+            mlflow_uri=os.getenv("MLFLOW_TRACKING_URI")
         )
         return model_evaluation_config
