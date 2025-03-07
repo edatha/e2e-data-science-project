@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/dwiat/MLOps%20Courses/e2e-data-science-project/mlruns/0/e83161c9df0644ffa79c853534575c12/artifacts
+end_time: 1741340398938
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: e83161c9df0644ffa79c853534575c12
+run_name: incongruous-lark-946
+run_uuid: e83161c9df0644ffa79c853534575c12
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1741340392922
+status: 3
+tags: []
+user_id: dwiat
